@@ -1,0 +1,28 @@
+# Blueprint de Render: crea el web service + la base de datos PostgreSQL.
+# Render > New > Blueprint > seleccione el repositorio.
+services:
+  - type: web
+    name: registro-estudiantes
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DATABASE_URL
+        fromDatabase:
+          name: registro-estudiantes-db
+          property: connectionString
+      - key: RECAPTCHA_SITE_KEY
+        sync: false
+      - key: RECAPTCHA_SECRET_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: "*"
+
+databases:
+  - name: registro-estudiantes-db
+    plan: free
+    databaseName: estudiantes

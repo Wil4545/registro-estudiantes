@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Estudiantes</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">Control Académico</span>
+    <nav>
+      <a href="index.html">Registro</a>
+      <a href="consulta.html" class="activo">Consulta</a>
+    </nav>
+  </header>
+
+  <main class="contenedor ancho">
+    <section class="tarjeta">
+      <h1>Estudiantes registrados</h1>
+
+      <div class="barra">
+        <input type="search" id="buscador" placeholder="Buscar por carné, nombre, correo, carrera, teléfono..."
+               aria-label="Buscar estudiantes">
+        <button type="button" class="btn primario" id="btnActualizar">&#x21bb; Actualizar</button>
+      </div>
+      <p class="sub" id="resumen">Cargando...</p>
+
+      <div id="alerta" class="alerta oculto" role="alert"></div>
+
+      <div class="tabla-wrap">
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Carné</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Correo</th>
+              <th>Carrera</th>
+              <th>Teléfono</th>
+              <th>Fecha de nacimiento</th>
+              <th>Género</th>
+              <th>Fecha de registro</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/consulta.js"></script>
+</body>
+</html>
